@@ -1,0 +1,195 @@
+<script type="text/javascript">
+// CORES:
+
+	const cores = [ 'Verde', 'Amarelo', 'Azul', 'Branco' ]
+
+for (const index in cores) {
+  console.log(index, cores[index])
+}
+// 0 "Verde"
+// 1 "Amarelo"
+// ...
+
+// O ARRAY FOI ULTILIZADO PARA ARMAZENAR OS VALORES E INFORMAR AS CORES
+
+// PESSOA:
+
+const pessoa = {
+  nome: 'Bruno',
+  idade: 25
+}
+
+for (const index in pessoa) {
+  console.log(`${index} - ${pessoa[index]}`)
+}
+// nome - Bruno | idade - 25
+
+// AQUI FOI USADO A DECLARAÇÃO CONST PARA CRIAR UMA VARIÁVEL COM VALOR FIXO E ENTÃO FOI CRIADO
+// PARA QUE PUDESSE RETORNAR O RESULTADO
+
+// PRODUTO:
+
+const produtos = [
+  { descricao: 'Resma Ofício', valor: 11.50, quantidade: 10 },
+  { descricao: 'Lapis preto', valor: 0.50, quantidade: 3 },
+  { descricao: 'Transferidor plastico', valor: 1.20, quantidade: 4 }
+]
+
+let total = 0
+
+for (const index in produtos) {
+  const { valor, quantidade } = produtos[index]
+
+  total += valor * quantidade
+}
+
+console.log(total) // 121.3
+
+// NOVAMENTE FOI USADA A DECLARAÇÃO CONST PARA ARMAZENAR AS DESCRIÇÕES DO PRODUTO
+// FOI CRIADO O LET 0 PARA LIMITAR OS VALORES E CRIADO O FOR PAR MULTIPLICA-LOS
+
+// FOR ... OF
+
+// LISTA DE NÚMEROS:
+
+const numeros = [ 10, 11, 22, 23, 34, 45, 66, 17, 28, 93, 101 ]
+
+for (const numero of numeros) {
+  console.log(numero)
+}
+
+// O FOR OF FOI USADO PARA INICIAR O CONTADOR DAS VARIÁVEIS DESTA CONSTANTE
+
+// LISTA DE CARROS:
+
+const carros = [
+  { id: 1, modelo: 'Corsa', marca: 'Chevrolet', preco: 18000 },
+  { id: 2, modelo: 'Punto', marca: 'Fiat', preco: 12000 },
+  { id: 3, modelo: 'Gol', marca: 'Volkswagen', preco: 14000 },
+  { id: 4, modelo: 'Saveiro', marca: 'Volkswagen', preco: 20000 },
+  { id: 5, modelo: 'Uno', marca: 'Fiat', preco: 12000 }
+]
+
+let total = 2
+
+for (const carro of carros) {
+  total += carro.preco
+}
+
+// converte o número para o padrão monetário
+const valorFinal = Number(total).toLocaleString('pt-BR', {
+  style: 'currency',
+  currency: 'BRL'
+})
+
+console.log(valorFinal) // R$ 76,000.00
+
+// APÓS SER FEITA A LISTA DE CARROS FOI CRIADO O FOR OF PARA CONTAR OS PREÇOS E EM SEGUIDA
+// FOI FEITA UMA CONSTANTE PARA INFORMAR O VALOR FINAL DOS PREÇOS DOS CARROS
+
+// ARTIGO:
+
+const artigo = document.querySelectorAll('article > p')
+
+for (const paragrafo of artigo) {
+  paragrafo.classList.add("read")
+}
+
+// forEach
+
+// SOMA DOS VALORES DE UMA ARRAY:
+
+var numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var total = 0;
+
+function somar(item) {
+    total += item;
+}
+
+numeros.forEach(somar);
+console.log(total);
+
+// O forEach ESTÁ EXECUTANTO CADA FUNÇAÕ DE UMA ARRAY 
+
+// ÍNDICE:
+
+var numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var total = 0;
+
+function somar(item, indice) {
+    total += item;
+    console.log("[índice " + indice + "]= " + total + " -> ");
+}
+
+numeros.forEach(somar);
+
+// ESSE É O EXEMPLO ANTERIOR POREM O VALOR DA SOMA E EXEBIDA A CADA POSIÇÃO DO ARRAY COM O ÍNDICE
+// SENDO PERCORRIDO 
+
+// ITENS DO ARRAY:
+
+var numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var total = 0;
+
+function somar(item, indice) {
+    total += item;
+    numeros[indice] = total;
+}
+
+numeros.forEach(somar);
+console.log(numeros);
+
+// NESSA SEQUENCIA OS VALORES DO ARRAY JUNTAMENTE COM O VALOR DAS SOMATÓRIAS DE CADA
+// POSIÇÃO SERÃO IMPRIMIDOS
+
+// ARRAY F:
+
+var marcas = ["Fiat", "Chevrolet", "Ford", "Volkswagen"]
+var marcasIniciadasComF = [];
+var novoIndice = 0;
+
+function selecionarMarcas(item, indice) {
+    if (marcas[indice].indexOf("F") == 0) {
+        marcasIniciadasComF[novoIndice] = marcas[indice];
+        novoIndice++;
+    }
+}
+
+marcas.forEach(selecionarMarcas);
+console.log(marcasIniciadasComF);
+
+// NESSE EXEMPLO O forEach FOI ULTILIZADO PARA CRIAR UM ARRAY QUE CONTASSE APENAS
+// OS CARROS COM MARCA COM LETRA F
+
+// STRINGS:
+
+var nomes = ["Alberto", "Alex", "Sandro", "Roberta"];
+
+function converterParaMaisculo(item, indice) {
+    nomes[indice] = nomes[indice].toUpperCase();
+}
+
+nomes.forEach(converterParaMaisculo);
+console.log(nomes);
+
+// NESSE EXEMPLOS TODAS AS STRINGS FORAM ATUALIZADAS PARA QUE FICASSEM MAIUSCULAS
+
+// MAIOR NOME:
+
+var nomes = ["Alberto", "Alex", "Sandro", "Ana Roberta"];
+var tamanhoNome = 0;
+var nome = "";
+
+function maiorNome(item, indice) {
+    if (nomes[indice].length > tamanhoNome) {
+        nome = nomes[indice];
+        tamanhoNome = nomes[indice].length;
+    }
+}
+
+nomes.forEach(maiorNome);
+console.log(nome);
+
+// NESSE EXEMPLO A PARTIR DE UMA ARRAY DE NÚMEROS FOI ENCONTRADO O MAIOR DOS NOMES DA FUNÇÃO
+
+</script>
